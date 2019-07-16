@@ -8,6 +8,17 @@ use App\Movie;
 
 class MovieController extends Controller
 {
+
+    /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['only' => ['index']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +26,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return auth()->user()
-            ? Movie::all()
-            : response()->json(['error' => 'Unauthorized'], 401);
+        return Movie::all();
     }
 
     /**
