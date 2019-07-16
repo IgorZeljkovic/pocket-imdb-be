@@ -15,7 +15,9 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return Movie::all();
+        return auth()->user()
+            ? Movie::all()
+            : response()->json(['error' => 'Unauthorized'], 401);
     }
 
     /**
