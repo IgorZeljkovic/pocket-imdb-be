@@ -25,8 +25,6 @@ class AuthController extends Controller
      */
     public function login(UserLoginRequest $request)
     {
-        $request->validated();
-
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {

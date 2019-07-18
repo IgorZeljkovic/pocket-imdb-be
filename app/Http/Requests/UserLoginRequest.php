@@ -24,7 +24,7 @@ class UserLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['email', 'max:255']
+            'email' => 'email|max:255'
         ];
     }
 }
