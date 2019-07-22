@@ -24,9 +24,9 @@ class MovieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Movie::paginate(10);
+        return Movie::where("title", "like", "%{$request->title}%")->paginate(10);
     }
 
     /**
