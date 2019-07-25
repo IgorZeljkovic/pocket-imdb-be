@@ -29,6 +29,13 @@ class MovieController extends Controller
         return Movie::where("title", "like", "%{$request->title}%")->paginate(10);
     }
 
+    public function visit(Movie $movie)
+    {
+        $movie->increment('visits_number');
+
+        return $movie; 
+    }
+
     /**
      * Store a newly created resource in storage.
      *

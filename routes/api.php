@@ -30,3 +30,5 @@ Route::post('movies/{movie}/vote/{type}', 'Api\MovieVoteController@store')
         ->where('type', 'like|dislike');
 Route::delete('movies/{movie}/vote/{type}', 'Api\MovieVoteController@destroy');
 Route::put('movies/{movie}/vote/{type}', 'Api\MovieVoteController@update');
+
+Route::post('movies/{movie}/visit', 'Api\MovieController@visit');
