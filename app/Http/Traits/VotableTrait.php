@@ -1,20 +1,17 @@
 <?php
 
 namespace App\Http\Traits;
+use App\Vote;
 
 trait VotableTrait
 {
     public function votes()
     {
-        return $this->morphMany('App\Vote', 'votable');
+        return $this->morphMany(Vote::class, 'votable');
     }
 
     public function getUserHasLikedAttribute()
     {
-        if (!auth()->check()) {
-            return false;
-        }
-
         return $this->votes->contains(static function ($vote) {
             return $vote->user_id === auth()->id() && $vote->type === 'like';
         });
@@ -22,10 +19,6 @@ trait VotableTrait
 
     public function getUserHasDislikedAttribute()
     {
-        if (!auth()->check()) {
-            return false;
-        }
-
         return $this->votes->contains(static function ($vote) {
             return $vote->user_id === auth()->id() && $vote->type === 'dislike';
         });
