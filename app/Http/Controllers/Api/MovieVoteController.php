@@ -27,11 +27,9 @@ class MovieVoteController extends Controller
      */
     public function store(Movie $movie, $type)
     {
-        return Vote::create([
+        return $movie->votes()->create([
             'type' => $type,
-            'user_id' => auth()->id(),
-            'votable_id' => $movie->id,
-            'votable_type' => Movie::class            
+            'user_id' => auth()->id()
         ])->votable;
     }
 
