@@ -32,3 +32,5 @@ Route::delete('movies/{movie}/vote/{type}', 'Api\MovieVoteController@destroy');
 Route::put('movies/{movie}/vote/{type}', 'Api\MovieVoteController@update');
 
 Route::post('movies/{movie}/visit', 'Api\MovieController@visit');
+
+Route::apiResource('genres', 'Api\GenreController')->only('index');
