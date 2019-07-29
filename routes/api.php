@@ -34,3 +34,6 @@ Route::put('movies/{movie}/vote/{type}', 'Api\MovieVoteController@update');
 Route::post('movies/{movie}/visit', 'Api\MovieController@visit');
 
 Route::apiResource('genres', 'Api\GenreController')->only('index');
+
+Route::post('movies/{movie}/comment', 'Api\MovieCommentController@store');
+Route::get('movies/{movie}/comment', 'Api\MovieCommentController@index');

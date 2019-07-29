@@ -15,6 +15,11 @@ class Movie extends Model
         return $this->belongsTo(Genre::class);
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
     protected $with = ['genre'];
 
     protected $appends = [
